@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: restproxy
+
+server:
+  port: 8080
+
+# Time in millis
+eu:
+  emundo:
+    system:
+      timeout: 5000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
