@@ -1,0 +1,39 @@
+server:
+  port: 9000
+
+# url + /actuator/health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,mappings
+    metrics:
+      enabled: true
+  info:
+    git:
+      enabled: true
+      mode: simple
+
+logging:
+  level:
+    io:
+      r2dbc:
+        postgresql:
+          client:
+            ReactorNettyClient: off
+
+# Time in millis
+eu:
+  emundo:
+    system:
+      timeout: 5000
+    message:
+      exchange: booking-exchange
+      routing-key:
+        createBooking: create-booking
+        saveBooking: save-booking
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
